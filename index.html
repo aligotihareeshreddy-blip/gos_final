@@ -18,20 +18,30 @@
 <body>
 
     <div class="brand-bar">GOS Enterprises • Where you can Fulfil your Dream</div>
+    <div class="mobile-brand-bar">
+        <img src="./gos_logo_final.png" width="80" height="60" alt="GOS Logo" />
+        <div class="mobile-brand-bar-text">GOS Enterprises • Where you can Fulfil your Dream</div>
+        <button class="mobile-nav-toggle" aria-label="Toggle navigation">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </div>
 
     <header id="header">
         <div class="container">
             <div class="nav-inner">
                 <div class="logo-group">
-                    <img src="./gos_logo_final.png" width="120" height="100" />
+                    <img src="./gos_logo_final.png" width="120" height="100" alt="GOS Logo" />
                 </div>
-                <nav>
+
+                <nav id="nav-menu">
                     <a href="#about">Philosophy</a>
                     <a href="#about-us">About Us</a>
                     <a href="#goals">Your Goals</a>
                     <a href="#process">How it Works</a>
                     <a href="#listings">Properties</a>
-                    <a href="#contact">Contact Us</a>
+                    <a href="#contact" class="nav-cta">Contact Us</a>
                 </nav>
             </div>
         </div>
@@ -58,7 +68,7 @@
                     land and luxury flats to independent homes. Whether your goal is generational wealth, dream home
                     ownership, or profitable resale, we make the process transparent and stress-free.
                 </p>
-                <div style="display: flex; gap: 1.8rem; flex-wrap: wrap;">
+                <div class="header-button">
                     <a href="#contact" class="btn">Start Your Journey</a>
                     <a href="#listings" class="btn"
                         style="background: transparent; border: 1.5px solid white; color: white;">View Properties
@@ -256,12 +266,13 @@
                     </div>
                 </div>
 
-                <form action="https://formsubmit.co/harishreddy702@gmail.com" method="POST">
+                <form action="https://formsubmit.co/richirichard90@gmail.com" method="POST">
 
                     <input type="hidden" name="_captcha" value="false">
                     <input type="hidden" name="_template" value="table">
                     <input type="hidden" name="_subject" value="New Enquiry - GOS Enterprises">
-                    <input type="hidden" name="_next" value="https://inquisitive-unicorn-83892f.netlify.app/thank-you.html">
+                    <input type="hidden" name="_next"
+                        value="https://gosenterprise.com/thank-you.html">
 
                     <div class="form-group">
                         <label>Full Name</label>
@@ -276,7 +287,7 @@
 
                         <div class="form-group">
                             <label>Mobile Number</label>
-                            <input type="tel" name="mobile" placeholder="+91 XXXXXXXXXX" required>
+                            <input type="tel" name="mobile" placeholder="+91 XXXXXXXXXX" required pattern="[0-9]{10}">
                         </div>
                     </div>
 
@@ -352,30 +363,42 @@
         </svg>
     </a>
 
-    <script>
-        // Dynamically set current year in footer
-        document.getElementById('current-year').textContent = new Date().getFullYear();
-    </script>
+
 
     <script>
-        // Header scroll effect
+        // Set Year
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+
+        // Header Scroll
         window.addEventListener('scroll', () => {
             const header = document.getElementById('header');
-            if (window.scrollY > 80) {
-                header.classList.add('scrolled');
-            } else {
-                header.classList.remove('scrolled');
-            }
+            header.classList.toggle('scrolled', window.scrollY > 80);
         });
 
-        // Hero slider
+        // Mobile Menu Logic
+        const menuToggle = document.querySelector('.mobile-nav-toggle');
+        const navMenu = document.querySelector('#nav-menu');
+
+        menuToggle.addEventListener('click', () => {
+            menuToggle.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        });
+
+        document.querySelectorAll('#nav-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                menuToggle.classList.remove('active');
+                navMenu.classList.remove('active');
+            });
+        });
+
+        // Slider
         const slides = document.querySelectorAll('.slide');
         let currentSlide = 0;
         setInterval(() => {
             slides[currentSlide].classList.remove('active');
             currentSlide = (currentSlide + 1) % slides.length;
             slides[currentSlide].classList.add('active');
-        }, 5500);
+        }, 5000);
     </script>
 </body>
 
