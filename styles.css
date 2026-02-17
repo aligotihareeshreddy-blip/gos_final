@@ -585,6 +585,7 @@ header.scrolled .mobile-nav-toggle span {
         display: flex;
 
     }
+
     .header {
         padding-top: 52px;
     }
@@ -606,9 +607,19 @@ header.scrolled .mobile-nav-toggle span {
     }
 
     .philosophy-visual {
-        width: 120px;
+        width: 100px;
         height: 100px;
         position: relative;
+    }
+
+    .rotating-compass {
+        width: 150%;
+        height: 100%;
+        border-radius: 50%;
+        opacity: 0.80;
+        filter: sepia(100%) saturate(300%) hue-rotate(5deg);
+        /* Tint to match gold */
+        animation: slowRotate 25s linear infinite;
     }
 
     .container {
